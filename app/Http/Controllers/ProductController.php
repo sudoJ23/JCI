@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class HarvestController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $title = 'Harvest';
+        $title = 'Product';
+        $products = Product::all();
 
-        return view('harvest.index', compact('title'));
+        return view('product.index', compact('title', 'products'));
     }
 
     /**
