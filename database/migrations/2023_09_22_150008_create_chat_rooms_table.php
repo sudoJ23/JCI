@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('waiting_lists', function (Blueprint $table) {
+        Schema::create('chat_rooms', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->timestamps('accepted_at');
-            $table->timestamps('denied_at');
             $table->timestamps();
         });
     }
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('waiting_lists');
+        Schema::dropIfExists('chat_rooms');
     }
 };

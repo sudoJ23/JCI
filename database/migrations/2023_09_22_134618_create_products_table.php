@@ -22,7 +22,7 @@ return new class extends Migration
             $table->tinyInteger('status');
             $table->text('notes');
             $table->text('description');
-            $table->user_id('user_id');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

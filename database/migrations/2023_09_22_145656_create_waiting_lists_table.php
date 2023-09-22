@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('waiting_lists', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained();
-            $table->unsignedBigInteger('buyer_id');
-            $table->string('qty');
-            $table->string('total');
+            $table->unsignedBigInteger('admin_id');
+            $table->timestamp('start_at');
+            $table->timestamp('accepted_at');
+            $table->timestamp('denied_at');
             $table->timestamps();
 
-            $table->foreign('buyer_id')->references('id')->on('users');
+            $table->foreign('admin_id')->references('id')->on('users');
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('waiting_lists');
     }
 };
