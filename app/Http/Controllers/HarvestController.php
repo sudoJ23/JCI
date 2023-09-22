@@ -11,7 +11,9 @@ class HarvestController extends Controller
      */
     public function index()
     {
-        return view('harvest.index');
+        $title = 'Harvest';
+
+        return view('harvest.index', compact('title'));
     }
 
     /**
