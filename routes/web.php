@@ -19,11 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+//kategori
+Route::get('/kategori', function () {
+    return view('kategori');
+})->middleware(['auth', 'verified'])->name('kategori');
 
 Route::middleware('auth')->group(function () {
     Route::resource('product', ProductController::class);

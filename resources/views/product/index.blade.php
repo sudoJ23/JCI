@@ -6,7 +6,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add</a>
+            <a href="{{ route('product.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add</a>
             <h5 class="mb-0">Data Product</h5>
         </div>
         <div class="table-responsive">
