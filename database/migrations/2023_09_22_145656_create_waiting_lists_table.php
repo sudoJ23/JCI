@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained();
             $table->unsignedBigInteger('admin_id');
-            $table->timestamp('start_at');
-            $table->timestamp('accepted_at');
-            $table->timestamp('denied_at');
+            $table->timestamp('start_at')->nullable();
+            $table->timestamp('accepted_at')->nullable();
+            $table->timestamp('denied_at')->nullable();
             $table->timestamps();
 
             $table->foreign('admin_id')->references('id')->on('users');
