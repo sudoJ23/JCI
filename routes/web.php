@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\HarvestController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +23,7 @@ Route::get('/master', function() {
     return view('layouts.master');
 });
 
-Route::get('harvest', [HarvestController::class, 'index'])->name('harvest.index');
+Route::resource('product', ProductController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
