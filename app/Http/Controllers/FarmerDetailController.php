@@ -67,7 +67,10 @@ class FarmerDetailController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = 'Edit Farmer';
+        $farmer_detail = FarmerDetail::find($id);
+
+        return view('farmer_detail.edit', compact('title', 'farmer_detail'));
     }
 
     /**
@@ -75,7 +78,24 @@ class FarmerDetailController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $messages = [
+            'required' => ':Attribute harus diisi.',
+            'numeric' => 'Isi :attribute dengan angka'
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'description' => 'required',
+            'address' => 'required',
+            'phone_number' => 'required'
+        ], $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        FarmerDetail::find($id)->update($request->all());
+        return redirect()->route('farmer_detail.index');
     }
 
     /**
@@ -83,6 +103,7 @@ class FarmerDetailController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $farmer_detail = FarmerDetail::find($id);
+        $farmer_detail->delete();
     }
 }
