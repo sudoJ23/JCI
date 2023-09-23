@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Create Farmer
+    Create Delivery Bumdes
 @endsection
 
 @section('content')
@@ -9,35 +9,46 @@
             <div class="card">
                 <div class="card-body pt-2">
                     <a href="javascript:;" class="card-title h3 d-block text-darker">
-                        Form Add Farmer
+                        Form Edit Delivery Bumdes
                     </a>
-                    <form action="{{ route('farmer_detail.update', $farmer_detail->id) }}" method="post">
+                    <form action="{{ route('delivery_bumdes.update', $delivery_bumdes) }}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label>User_id</label>
-                            <input type="text" name="user_id" class="form-control" value="{{ $farmer_detail->user_id }}">
-                            @error('user_id')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea name="description" class="form-control">{{ $farmer_detail->description }}</textarea>
-                            @error('description')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Address</label>
-                            <textarea name="address" class="form-control">{{ $farmer_detail->address }}</textarea>
-                            @error('address')
+                            <label>Driver Name</label>
+                            <input type="text" name="driver_name" class="form-control"
+                                value="{{ $delivery_bumdes->driver_name }}">
+                            @error('driver_name')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Phone Number</label>
-                            <input type="text" name="phone_number" class="form-control" value="{{ $farmer_detail->phone_number }}">
+                            <input type="text" name="phone_number" class="form-control" value="{{ $delivery_bumdes->phone_number }}">
+                            @error('phone_number')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Car Type</label>
+                            <input type="text" name="car_type" class="form-control" value="{{ $delivery_bumdes->car_type }}">
+                            @error('car_type')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Charge</label>
+                            <input type="text" name="charge" class="form-control" value="{{ $delivery_bumdes->charge }}">
+                            @error('charge')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Transaction ID</label>
+                            <input type="text" name="transaction_id" class="form-control" value="{{ $delivery_bumdes->transaction_id }}">
+                            @error('transaction_id')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Submit</button>
