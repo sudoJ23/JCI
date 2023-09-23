@@ -68,7 +68,10 @@ class DeliveryBumdesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = 'Edit Delivery Bumdes';
+        $delivery_bumdes = Delivery_bumdes::find($id);
+
+        return view('delivery_bumdes.edit', compact('title', 'delivery_bumdes'));
     }
 
     /**
@@ -76,7 +79,25 @@ class DeliveryBumdesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $messages = [
+            'required' => ':Attribute harus diisi.',
+            'numeric' => 'Isi :attribute dengan angka'
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'driver_name' => 'required',
+            'phone_number' => 'required',
+            'car_type' => 'required',
+            'charge' => 'required',
+            'transaction_id' => 'required'
+        ], $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        Delivery_bumdes::find($id)->update($request->all());
+        return redirect()->route('delivery_bumdes.index');
     }
 
     /**
