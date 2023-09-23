@@ -15,9 +15,12 @@ return new class extends Migration
             $table->uuid('id');
             $table->text('message');
             $table->unsignedBigInteger('sender_id');
+            $table->uuid('chatroom_id');
+            $table->timestamp('timestamp');
             $table->timestamps();
 
             $table->foreign('sender_id')->references('id')->on('users');
+            $table->foreign('chatroom_id')->references('id')->on('chat_rooms');
         });
     }
 
