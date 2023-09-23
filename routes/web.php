@@ -21,18 +21,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard.dashboard_farmer');
 // })->middleware(['auth', 'verified'])->name('dashboard_farmer');
-
-//kategori
-// Route::get('/kategori', function () {
-//     return view('kategori');
-// })->middleware(['auth', 'verified'])->name('kategori');
 
 Route::middleware('auth')->group(function () {
     Route::resource('product', ProductController::class);
