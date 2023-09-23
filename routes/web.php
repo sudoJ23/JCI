@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('farmer_detail', FarmerDetailController::class);
     Route::resource('delivery_bumdes', DeliveryBumdesController::class);
     Route::resource('category', CategoryController::class);
-    Route::get('/transaction', [TransactionController::class, 'index']);
+    Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
     Route::post('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
 
     Route::get('/master', function () {
