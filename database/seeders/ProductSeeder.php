@@ -14,6 +14,7 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         DB::table('products')->insert([
+            'category_id' => 2,
             'name' => 'Gula Semut',
             'price' => '16000',
             'qty_init' => '100',
@@ -23,7 +24,7 @@ class ProductSeeder extends Seeder
             'status' => 1,
             'notes' => 'test',
             'description' => 'Gula alami yang baik',
-            'user_id' => 1
+            'user_id' => 1,
         ]);
     }
 }
