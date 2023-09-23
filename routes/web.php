@@ -23,8 +23,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('dashboard.dashboard_farmer');
+})->middleware(['auth', 'verified'])->name('dashboard_farmer');
 
 //kategori
 Route::get('/kategori', function () {

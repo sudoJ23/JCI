@@ -22,10 +22,16 @@
 
 <body class="g-sidenav-show   bg-gray-100">
     <div class="min-height-300 bg-primary position-absolute w-100"></div>
-    <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4" id="sidenav-main">
+    <aside
+        class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4"
+        id="sidenav-main">
         <div class="sidenav-header">
-            <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-            <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard-pro/pages/dashboards/default.html " target="_blank"> <img src="../../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+            <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+                aria-hidden="true" id="iconSidenav"></i>
+            <a class="navbar-brand m-0"
+                href=" https://demos.creative-tim.com/argon-dashboard-pro/pages/dashboards/default.html "
+                target="_blank"> <img src="../../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100"
+                    alt="main_logo">
                 <span class="ms-1 font-weight-bold">SITIK</span>
             </a>
         </div>
@@ -34,72 +40,13 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#dashboardsExamples" class="nav-link "
-                        aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+                    <a class="nav-link" href="{{ route('dashboard_farmer') }}">
                         <div
                             class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
                             <i class="ni ni-shop text-primary text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Dashboards</span>
+                        <span class="nav-link-text ms-1">Dashboard</span>
                     </a>
-
-                    <div class="collapse " id="dashboardsExamples">
-                        <ul class="nav ms-4">
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/dashboards/landing.html">
-                                    <span class="sidenav-mini-icon"> L </span>
-                                    <span class="sidenav-normal"> Landing </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/dashboards/default.html">
-                                    <span class="sidenav-mini-icon"> D </span>
-                                    <span class="sidenav-normal"> Default </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/dashboards/automotive.html">
-                                    <span class="sidenav-mini-icon"> A </span>
-                                    <span class="sidenav-normal"> Automotive </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/dashboards/smart-home.html">
-                                    <span class="sidenav-mini-icon"> S </span>
-                                    <span class="sidenav-normal"> Smart Home </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false"
-                                    href="#vrExamples">
-                                    <span class="sidenav-mini-icon"> V </span>
-                                    <span class="sidenav-normal"> Virtual Reality <b class="caret"></b></span>
-                                </a>
-                                <div class="collapse " id="vrExamples">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/dashboards/vr/vr-default.html">
-                                                <span class="sidenav-mini-icon text-xs"> V </span>
-                                                <span class="sidenav-normal"> VR Default </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/dashboards/vr/vr-info.html">
-                                                <span class="sidenav-mini-icon text-xs"> V </span>
-                                                <span class="sidenav-normal"> VR Info </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/dashboards/crm.html">
-                                    <span class="sidenav-mini-icon"> C </span>
-                                    <span class="sidenav-normal"> CRM </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
                 <li class="nav-item">
                     <hr class="horizontal dark" />
@@ -177,14 +124,14 @@
                     <ul class="navbar-nav  justify-content-end">
                         <li class="nav-item d-flex align-items-center">
                             @auth
-                            <span class="d-sm-inline text-white d-none">{{ __(Auth::user()->name) }}</span>
+                                <span class="d-sm-inline text-white d-none">{{ __(Auth::user()->name) }}</span>
                             @endauth
                             @guest
-                            <a href="{{ route('login') }}"
-                                class="nav-link text-white font-weight-bold px-0" target="_blank">
-                                <i class="fa fa-user me-sm-1"></i>
-                                <span class="d-sm-inline d-none">Sign In</span>
-                            </a>
+                                <a href="{{ route('login') }}" class="nav-link text-white font-weight-bold px-0"
+                                    target="_blank">
+                                    <i class="fa fa-user me-sm-1"></i>
+                                    <span class="d-sm-inline d-none">Sign In</span>
+                                </a>
                             @endguest
                         </li>
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -270,4 +217,5 @@
 
     <script src="{{ asset('assets/js/argon-dashboard-pro.min.js') }}"></script>
 </body>
+
 </html>
