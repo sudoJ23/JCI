@@ -9,5 +9,13 @@ class Delivery_bumdes extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'driver_name',
+        'phone_number',
+        'car_type',
+        'charge',
+        'transaction_id',
+    ];
+
+    protected $table = 'delivery_bumdes';
 }
