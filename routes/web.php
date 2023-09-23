@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DeliveryBumdesController;
 use App\Http\Controllers\FarmerDetailController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -32,9 +33,12 @@ Route::get('/kategori', function () {
 Route::middleware('auth')->group(function () {
     Route::resource('product', ProductController::class);
     Route::resource('farmer_detail', FarmerDetailController::class);
+    Route::resource('delivery_bumdes', DeliveryBumdesController::class);
+
     Route::get('/master', function() {
         return view('layouts.master');
     });
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

@@ -6,18 +6,18 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UserSeeder extends Seeder
+class TransactionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('users')->insert([
-            'name' => 'jeremi',
-            'role_id' => 2,
-            'email' => 'jeremmi@gmail.com',
-            'password' => '12345678',
+        DB::table('transactions')->insert([
+            'product_id' => 4,
+            'buyer_id' => 1,
+            'qty' => '50',
+            'total' => '500000'
         ]);
     }
 }
