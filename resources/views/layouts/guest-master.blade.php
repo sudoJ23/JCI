@@ -43,12 +43,12 @@
                                         </a>
                                     </li>
                                     <li class="nav-item dropdown dropdown-hover mx-2">
-                                        <a href="{{ route('tentang') }}" class="@if (request()->routeIs('tentang')) text-primary @else text-dark @endif nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <a href="{{ route('about') }}" class="@if (request()->routeIs('about')) text-primary @else text-dark @endif nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
                                             Tentang Kami
                                         </a>
                                     </li>
                                     <li class="nav-item dropdown dropdown-hover mx-2">
-                                        <a href="{{ route('kontak') }}" class="@if (request()->routeIs('kontak')) text-primary @else text-dark @endif nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <a href="{{ route('contact') }}" class="@if (request()->routeIs('contact')) text-primary @else text-dark @endif nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
                                             Kontak Kami
                                         </a>
                                     </li>

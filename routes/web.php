@@ -22,22 +22,17 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/tentang', function () {
-    return view('tentang');
-})->name('tentang');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
-Route::get('/kontak', function () {
-    return view('kontak');
-})->name('kontak');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard_farmer');
 })->middleware(['auth', 'verified'])->name('dashboard_farmer');
-
-//kategori
-Route::get('/kategori', function () {
-    return view('kategori');
-})->middleware(['auth', 'verified'])->name('kategori');
 
 Route::middleware('auth')->group(function () {
     Route::resource('product', ProductController::class);
