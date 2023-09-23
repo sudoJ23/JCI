@@ -13,6 +13,7 @@
             <table class="table table-flush" id="datatable-search">
                 <thead class="thead-light">
                     <tr>
+                        <th>No</th>
                         <th>Name</th>
                         <th>Price</th>
                         <th>Qty Init</th>
@@ -27,8 +28,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $no = 1; ?>
                     @foreach ($products as $product)
                         <tr>
+                            <td>{{ $no++ }}</td>
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->qty_init }}</td>
@@ -42,8 +45,9 @@
                             <td>
                                 <a href="{{ route('product.edit', $product->id) }}" class="btn btn-info btn-sm"><i
                                         class="fas fa-edit"></i></a>
-                                <a href="{{ route('product.destroy', $product->id) }}" onclick="return confirm('Apakah anda yakin mengahpus data ini?')" class="btn btn-danger btn-sm"><i
-                                        class="fas fa-trash"></i></a>
+                                <a href="{{ route('product.destroy', $product->id) }}"
+                                    onclick="return confirm('Apakah anda yakin mengahpus data ini?')"
+                                    class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach
