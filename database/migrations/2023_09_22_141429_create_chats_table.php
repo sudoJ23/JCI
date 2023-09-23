@@ -15,11 +15,9 @@ return new class extends Migration
             $table->uuid('id');
             $table->text('message');
             $table->unsignedBigInteger('sender_id');
-            $table->unsignedBigInteger('receiver_id');
             $table->timestamps();
 
             $table->foreign('sender_id')->references('id')->on('users');
-            $table->foreign('receiver_id')->references('id')->on('users');
         });
     }
 

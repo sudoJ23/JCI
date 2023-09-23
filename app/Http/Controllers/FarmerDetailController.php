@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\FarmerDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ProductController extends Controller
+class FarmerDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $title = 'Product';
-        $products = Product::all();
+        $title = 'Farmer Detail';
+        $farmer_detail = FarmerDetail::all();
 
-        return view('product.index', compact('title', 'products'));
+        return view('farmer_detail.index', compact('title', 'farmer_detail'));
     }
 
     /**
@@ -24,9 +24,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $title = 'Create Product';
+        $title = 'Create Farmer';
 
-        return view('product.create', compact('title'));
+        return view('farmer_detail.create', compact('title'));
     }
 
     /**
@@ -40,21 +40,18 @@ class ProductController extends Controller
         ];
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'price' => 'required|numeric',
-            'qty_init' => 'required',
-            'qty_out' => 'required|numeric',
-            'unit' => 'required',
-            'status' => 'required',
-            'notes' => 'required',
+            'user_id' => 'required',
+            'description' => 'required',
+            'address' => 'required',
+            'phone_number' => 'required'
         ], $messages);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        Product::create($request->all());
-        return redirect()->route('product.index');
+        FarmerDetail::create($request->all());
+        return redirect()->route('farmer_detail.index');
     }
 
     /**
@@ -70,10 +67,10 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $title = 'Edit Product';
-        $product = Product::find($id);
+        $title = 'Edit Farmer';
+        $farmer_detail = FarmerDetail::find($id);
 
-        return view('product.edit', compact('title', 'product'));
+        return view('farmer_detail.edit', compact('title', 'farmer_detail'));
     }
 
     /**
@@ -87,21 +84,18 @@ class ProductController extends Controller
         ];
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'price' => 'required|numeric',
-            'qty_init' => 'required',
-            'qty_out' => 'required|numeric',
-            'unit' => 'required',
-            'status' => 'required',
-            'notes' => 'required',
+            'user_id' => 'required',
+            'description' => 'required',
+            'address' => 'required',
+            'phone_number' => 'required'
         ], $messages);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        Product::find($id)->update($request->all());
-        return redirect()->route('product.index');
+        FarmerDetail::find($id)->update($request->all());
+        return redirect()->route('farmer_detail.index');
     }
 
     /**
@@ -109,6 +103,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        Product::find($id)->delete();
+        $farmer_detail = FarmerDetail::find($id);
+        $farmer_detail->delete();
     }
 }
