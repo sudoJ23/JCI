@@ -53,7 +53,7 @@ class ProductController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $product = Product::create($request->all());
+        Product::create($request->all());
         return redirect()->route('product.index');
     }
 
@@ -70,7 +70,10 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = 'Edit Product';
+        $product = Product::find($id);
+
+        return view('product.edit', compact('title', 'product'));
     }
 
     /**
@@ -78,7 +81,27 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $messages = [
+            'required' => ':Attribute harus diisi.',
+            'numeric' => 'Isi :attribute dengan angka'
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'price' => 'required|numeric',
+            'qty_init' => 'required',
+            'qty_out' => 'required|numeric',
+            'unit' => 'required',
+            'status' => 'required',
+            'notes' => 'required',
+        ], $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        Product::find($id)->update($request->all());
+        return redirect()->route('product.index');
     }
 
     /**
@@ -86,6 +109,6 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Product::find($id)->delete();
     }
 }

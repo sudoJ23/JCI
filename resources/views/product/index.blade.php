@@ -23,6 +23,7 @@
                         <th>Notes</th>
                         <th>Desc</th>
                         <th>User</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,12 @@
                             <td>{{ $product->notes }}</td>
                             <td>{{ $product->description }}</td>
                             <td>{{ $product->user_id }}</td>
+                            <td>
+                                <a href="{{ route('product.edit', $product->id) }}" class="btn btn-info btn-sm"><i
+                                        class="fas fa-edit"></i></a>
+                                <a href="{{ route('product.destroy', $product->id) }}" onclick="return confirm('Apakah anda yakin mengahpus data ini?')" class="btn btn-danger btn-sm"><i
+                                        class="fas fa-trash"></i></a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
