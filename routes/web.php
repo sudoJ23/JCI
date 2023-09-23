@@ -6,6 +6,7 @@ use App\Http\Controllers\DeliveryBumdesController;
 use App\Http\Controllers\FarmerDetailController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,8 +45,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('farmer_detail', FarmerDetailController::class);
     Route::resource('delivery_bumdes', DeliveryBumdesController::class);
     Route::resource('category', CategoryController::class);
+    Route::get('/transaction', [TransactionController::class, 'index']);
+    Route::post('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
 
-    Route::get('/master', function() {
+    Route::get('/master', function () {
         return view('layouts.master');
     });
 
@@ -54,4 +57,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

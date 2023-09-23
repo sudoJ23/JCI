@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('buyer_id');
             $table->string('qty');
             $table->string('total');
+            $table->enum('status', ['Unpaid', 'Paid']);
             $table->timestamps();
 
             $table->foreign('buyer_id')->references('id')->on('users');

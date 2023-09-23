@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     use HasFactory;
-
+  
     public function delivery() {
         return $this->hasOne(Delivery_bumdes::class);
     }
