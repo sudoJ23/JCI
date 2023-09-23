@@ -174,7 +174,7 @@
                             <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                                 <li class="nav-item">
                                     <a href="https://www.billingmikrotik.com" class="nav-link text-muted"
-                                        target="_blank">Billing Mikrotik</a>
+                                        target="_blank">Sponsored by Billing Mikrotik</a>
                                 </li>
                             </ul>
                         </div>
