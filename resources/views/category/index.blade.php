@@ -1,13 +1,13 @@
 @extends('layouts.master')
 @section('title')
-    Delivery Bumdes
+    Category
 @endsection
 
 @section('content')
     <div class="card">
         <div class="card-header">
             <a href="{{ route('category.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add</a>
-            <h5 class="mb-0">Data Delivery Bumdes</h5>
+            <h5 class="mb-0">Data Category</h5>
         </div>
         <div class="table-responsive">
             <table class="table table-flush" id="datatable-search">
