@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeliveryBumdesController;
 use App\Http\Controllers\FarmerDetailController;
 use App\Http\Controllers\ProductController;
@@ -30,9 +31,11 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('/dashboard', function () {
-    return view('dashboard.dashboard_farmer');
-})->middleware(['auth', 'verified'])->name('dashboard_farmer');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard.dashboard_farmer');
+// })->middleware(['auth', 'verified'])->name('dashboard_farmer');
 
 Route::middleware('auth')->group(function () {
     Route::resource('product', ProductController::class);
