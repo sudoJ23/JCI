@@ -64,7 +64,10 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = 'Edit Delivery Bumdes';
+        $category = Category::find($id);
+
+        return view('category.edit', compact('title', 'category'));
     }
 
     /**
@@ -72,7 +75,21 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $messages = [
+            'required' => ':Attribute harus diisi.',
+            'numeric' => 'Isi :attribute dengan angka'
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required'
+        ], $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        Category::find($id)->update($request->all());
+        return redirect()->route('category.index');
     }
 
     /**
