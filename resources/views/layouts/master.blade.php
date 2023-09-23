@@ -61,6 +61,7 @@
                         <span class="nav-link-text ms-1">Product</span>
                     </a>
                 </li>
+                @if (auth()->user()->role->name == "bumdes")
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('farmer_detail.index') }}">
                         <div
@@ -88,6 +89,7 @@
                         <span class="nav-link-text ms-1">Category</span>
                     </a>
                 </li>
+                @endif
             </ul>
         </div>
     </aside>

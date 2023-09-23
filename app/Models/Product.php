@@ -13,9 +13,9 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function waitinglist() {
-        return $this->hasOne(waitingList::class);
-    }
+    // public function waitinglist() {
+    //     return $this->hasOne(waitingList::class);
+    // }
 
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
