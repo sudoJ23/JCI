@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return view('company.product');
+        $products = Product::all();
+        return view('company.product', compact('products'));
     }
 
     public function checkout(Request $request)

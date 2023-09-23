@@ -61,6 +61,15 @@
                         <span class="nav-link-text ms-1">Product</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('transaction') }}">
+                        <div
+                            class="icon icon-shape icon-sm text-center  me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-align-left-2 text-dark text-sm"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Buy Product</span>
+                    </a>
+                </li>
                 @if (auth()->user()->role->name == "bumdes")
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('farmer_detail.index') }}">
