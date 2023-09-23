@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DeliveryBumdesController;
 use App\Http\Controllers\FarmerDetailController;
 use App\Http\Controllers\ProductController;
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('product', ProductController::class);
     Route::resource('farmer_detail', FarmerDetailController::class);
     Route::resource('delivery_bumdes', DeliveryBumdesController::class);
+    Route::resource('category', CategoryController::class);
 
     Route::get('/master', function() {
         return view('layouts.master');
