@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FarmerDetailController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('product', ProductController::class);
+    Route::resource('farmer_detail', FarmerDetailController::class);
     Route::get('/master', function() {
         return view('layouts.master');
     });
