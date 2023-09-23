@@ -16,32 +16,40 @@
                         <th>No</th>
                         <th>Name</th>
                         <th>Price</th>
-                        <th>Qty Init</th>
-                        <th>Qty In</th>
-                        <th>Qty Out</th>
+                        <th>Qty</th>
                         <th>Unit</th>
                         <th>Status</th>
-                        <th>Notes</th>
                         <th>Desc</th>
                         <th>User</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $no = 1; ?>
                     @foreach ($products as $product)
                         <tr>
-                            <td>{{ $no++ }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $product->name }}</td>
-                            <td>{{ $product->price }}</td>
-                            <td>{{ $product->qty_init }}</td>
-                            <td>{{ $product->qty_in }}</td>
-                            <td>{{ $product->qty_out }}</td>
+                            <td>{{ number_format($product->price, 0, ',', '.'); }}</td>
+                            <td>{{ (intval($product->qty_init) + intval($product->qty_in) - intval($product->qty_out)) }}</td>
                             <td>{{ $product->unit }}</td>
-                            <td>{{ $product->status }}</td>
-                            <td>{{ $product->notes }}</td>
+                            @if ($product->status == 1)
+                                <td><span class="badge badge-success ms-auto">Disetujui</span></td>
+                            @elseif ($product->status == 0)
+                                <td><span class="badge badge-info ms-auto">Menunggu</span></td>
+                            @elseif ($product->status == 2)
+                                <td><span class="badge badge-warning ms-auto">Ditolak</span></td>
+                            @endif
                             <td>{{ $product->description }}</td>
-                            <td>{{ $product->user_id }}</td>
+                            <td>{{ Str::ucfirst($product->user->name) }}</td>
+                            @if (auth()->user()->role->name == "bumdes")
+                            <td>
+                                <a href="{{ route('product.accept', $product->id) }}" class="btn btn-success btn-sm"><i
+                                        class="fas fa-check"></i></a>
+                                <a href="{{ route('product.reject', $product->id) }}"
+                                    onclick="return confirm('Apakah anda yakin ingin menolak produk ini?')"
+                                    class="btn btn-danger btn-sm"><i class="fas fa-mark"></i></a>
+                            </td>
+                            @elseif (auth()->user()->role->name == "farmer")
                             <td>
                                 <a href="{{ route('product.edit', $product->id) }}" class="btn btn-info btn-sm"><i
                                         class="fas fa-edit"></i></a>
@@ -49,6 +57,7 @@
                                     onclick="return confirm('Apakah anda yakin mengahpus data ini?')"
                                     class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>

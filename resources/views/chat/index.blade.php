@@ -421,7 +421,9 @@
             socket.emit('unregister', currentRoom);
         });
 
-        socket.on('newMessage', () => {});
+        socket.on('newMessage', (data) => {
+// lanjut disini
+        });
 
         socket.on('receiveRoomChat', (data) => {
             let rec = data.room[0].receiver_id;

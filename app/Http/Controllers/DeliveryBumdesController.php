@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Delivery_bumdes;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -25,8 +26,9 @@ class DeliveryBumdesController extends Controller
     public function create()
     {
         $title = 'Create Delivery Bumdes';
+        $transactions = Transaction::all();
 
-        return view('delivery_bumdes.create', compact('title'));
+        return view('delivery_bumdes.create', compact('title', 'transactions'));
     }
 
     /**

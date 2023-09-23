@@ -43,7 +43,11 @@
                         </div>
                         <div class="form-group">
                             <label>Transaction ID</label>
-                            <input type="text" name="transaction_id" class="form-control">
+                            <select name="transaction" id="transaction" class="form-control">
+                                @foreach ($transactions as $transaction)
+                                    <option value="{{ $transaction->id }}">{{ $transaction->product->id}}</option>
+                                @endforeach
+                            </select>
                             @error('transaction_id')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror

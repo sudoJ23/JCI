@@ -9,5 +9,16 @@ class FarmerDetail extends Model
 {
     use HasFactory;
 
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    protected $fillable = [
+        'user_id',
+        'description',
+        'address',
+        'phone_number',
+    ];
+
     protected $guarded = [];
 }

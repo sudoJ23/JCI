@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ChatRoom extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'sender_id',
+        'receiver_id',
+    ];
+    protected $table = "chat_rooms";
 }

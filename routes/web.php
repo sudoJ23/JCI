@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeliveryBumdesController;
 use App\Http\Controllers\FarmerDetailController;
 use App\Http\Controllers\ProductController;
@@ -21,19 +22,26 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard.dashboard_farmer');
-})->middleware(['auth', 'verified'])->name('dashboard_farmer');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
-//kategori
-Route::get('/kategori', function () {
-    return view('kategori');
-})->middleware(['auth', 'verified'])->name('kategori');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard.dashboard_farmer');
+// })->middleware(['auth', 'verified'])->name('dashboard_farmer');
 
 Route::middleware('auth')->group(function () {
     Route::resource('product', ProductController::class);
+    Route::get('product/accept/${id}', [ProductController::class, 'accept'])->name('product.accept');
+    Route::get('product/reject/${id}', [ProductController::class, 'reject'])->name('product.reject');
     Route::resource('farmer_detail', FarmerDetailController::class);
     Route::resource('delivery_bumdes', DeliveryBumdesController::class);
     Route::resource('category', CategoryController::class);

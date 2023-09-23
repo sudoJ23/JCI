@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('title')
-    Dashboard
+    Dashboard company
 @endsection
 
 @section('content')
-    ini dashboard
+    ini dashboard company
 @endsection

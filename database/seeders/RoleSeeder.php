@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class RoleSeeder extends Seeder
 {
@@ -15,13 +16,19 @@ class RoleSeeder extends Seeder
     {
         DB::table('roles')->insert([
             [
-                'name' => 'bumdes'
+                'name' => 'bumdes',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
-                'name' => 'farmer'
+                'name' => 'farmer',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
-                'name' => 'company'
+                'name' => 'company',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
         ]);
     }
