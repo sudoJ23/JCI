@@ -52,6 +52,7 @@
                     <hr class="horizontal dark" />
                     <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">DOCS</h6>
                 </li>
+                @if (auth()->user()->role->name != "company")
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('product.index') }}">
                         <div
@@ -61,6 +62,8 @@
                         <span class="nav-link-text ms-1">Product</span>
                     </a>
                 </li>
+                @endif
+                @if (auth()->user()->role->name == "company")
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('transaction') }}">
                         <div
@@ -70,38 +73,51 @@
                         <span class="nav-link-text ms-1">Buy Product</span>
                     </a>
                 </li>
-                @if (auth()->user()->role->name == "bumdes")
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('farmer_detail.index') }}">
-                        <div
-                            class="icon icon-shape icon-sm text-center  me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-align-left-2 text-dark text-sm"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Farmer Detail</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('delivery_bumdes.index') }}">
-                        <div
-                            class="icon icon-shape icon-sm text-center  me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-align-left-2 text-dark text-sm"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Delivery Bumdes</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('category.index') }}">
-                        <div
-                            class="icon icon-shape icon-sm text-center  me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-align-left-2 text-dark text-sm"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Category</span>
-                    </a>
-                </li>
                 @endif
+                @if (auth()->user()->role->name == 'bumdes')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('farmer_detail.index') }}">
+                            <div
+                                class="icon icon-shape icon-sm text-center  me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-align-left-2 text-dark text-sm"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Farmer Detail</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('delivery_bumdes.index') }}">
+                            <div
+                                class="icon icon-shape icon-sm text-center  me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-align-left-2 text-dark text-sm"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Delivery Bumdes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('category.index') }}">
+                            <div
+                                class="icon icon-shape icon-sm text-center  me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-align-left-2 text-dark text-sm"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Category</span>
+                        </a>
+                    </li>
+                @endif
+
+                <hr>
+                <a class="dropdown-item text-danger text-center" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                    <i class="bi bi-lock-fill"></i> {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </ul>
         </div>
     </aside>
+    ui
     <main class="main-content position-relative border-radius-lg ">
 
         <nav class="navbar navbar-main navbar-expand-lg  px-0 mx-4 shadow-none border-radius-xl z-index-sticky "
