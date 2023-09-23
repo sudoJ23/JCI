@@ -17,9 +17,15 @@ class TransactionController extends Controller
         return view('company.product', compact('products'));
     }
 
+    public function createTransaction(Request $request)
+    {
+        $request->request->add(['buyer_id' => auth()->user()->id, 'product_id' => $request->product_id, 'total' => $request->qty * $request->price, 'status' => 'Unpaid']);
+        $transaction = Transaction::create($request->all());
+    }
+
     public function checkout(Request $request)
     {
-        $request->request->add(['buyer_id' => 1, 'product_id' => 4, 'total' => $request->qty * 10000, 'status' => 'Unpaid']);
+        $request->request->add(['buyer_id' => auth()->user()->id, 'product_id' => $request->product_id, 'total' => $request->qty * $request->price, 'status' => 'Unpaid']);
         $transaction = Transaction::create($request->all());
 
         // Set your Merchant Server Key
@@ -37,7 +43,7 @@ class TransactionController extends Controller
                 'gross_amount' => $transaction->total,
             ),
             'customer_details' => array(
-                'buyer_id' => 1
+                'buyer_id' => auth()->user()->id
             ),
         );
 

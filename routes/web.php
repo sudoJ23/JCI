@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('category', CategoryController::class);
     Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
     Route::post('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
+    Route::post('/createTransaction', [TransactionController::class, 'createTransaction'])->name('transaction.create');
 
     Route::get('/master', function () {
         return view('layouts.master');

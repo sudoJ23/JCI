@@ -32,79 +32,6 @@
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse  w-auto h-auto" id="sidenav-collapse-main">
             <ul class="navbar-nav">
-
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#dashboardsExamples" class="nav-link "
-                        aria-controls="dashboardsExamples" role="button" aria-expanded="false">
-                        <div
-                            class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
-                            <i class="ni ni-shop text-primary text-sm opacity-10"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Dashboards</span>
-                    </a>
-
-                    <div class="collapse " id="dashboardsExamples">
-                        <ul class="nav ms-4">
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/dashboards/landing.html">
-                                    <span class="sidenav-mini-icon"> L </span>
-                                    <span class="sidenav-normal"> Landing </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/dashboards/default.html">
-                                    <span class="sidenav-mini-icon"> D </span>
-                                    <span class="sidenav-normal"> Default </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/dashboards/automotive.html">
-                                    <span class="sidenav-mini-icon"> A </span>
-                                    <span class="sidenav-normal"> Automotive </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/dashboards/smart-home.html">
-                                    <span class="sidenav-mini-icon"> S </span>
-                                    <span class="sidenav-normal"> Smart Home </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false"
-                                    href="#vrExamples">
-                                    <span class="sidenav-mini-icon"> V </span>
-                                    <span class="sidenav-normal"> Virtual Reality <b class="caret"></b></span>
-                                </a>
-                                <div class="collapse " id="vrExamples">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/dashboards/vr/vr-default.html">
-                                                <span class="sidenav-mini-icon text-xs"> V </span>
-                                                <span class="sidenav-normal"> VR Default </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="../../pages/dashboards/vr/vr-info.html">
-                                                <span class="sidenav-mini-icon text-xs"> V </span>
-                                                <span class="sidenav-normal"> VR Info </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="../../pages/dashboards/crm.html">
-                                    <span class="sidenav-mini-icon"> C </span>
-                                    <span class="sidenav-normal"> CRM </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <hr class="horizontal dark" />
-                    <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">DOCS</h6>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('product.index') }}">
                         <div
@@ -180,7 +107,6 @@
                     <div class="card blur shadow-blur max-height-vh-70 overflow-auto overflow-x-hidden mb-5 mb-lg-0">
                         <div class="card-header p-3">
                             <h6>Obrolan</h6>
-                            {{-- <input type="email" class="form-control" placeholder="Search Contact" aria-label="Email" onfocus="focused(this)" onfocusout="defocused(this)"> --}}
                         </div>
                         <div class="card-body p-2" id="chats">
                         </div>
@@ -195,9 +121,11 @@
                                         {{-- <img alt="Image" src="../../assets/img/team-2.jpg" class="avatar"> --}}
                                         <div class="ms-3">
                                             <h6 class="mb-0 d-block">-</h6>
-                                            {{-- <span class="text-sm text-dark opacity-8">last seen today at 1:53am</span> --}}
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col">
+                                    <a role="button" class="btn btn-primary">Selesai</a>
                                 </div>
                             </div>
                         </div>
