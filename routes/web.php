@@ -39,6 +39,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 
 Route::middleware('auth')->group(function () {
     Route::resource('product', ProductController::class);
+    Route::get('product/accept/${id}', [ProductController::class, 'accept'])->name('product.accept');
+    Route::get('product/reject/${id}', [ProductController::class, 'reject'])->name('product.reject');
     Route::resource('farmer_detail', FarmerDetailController::class);
     Route::resource('delivery_bumdes', DeliveryBumdesController::class);
     Route::resource('category', CategoryController::class);
