@@ -14,22 +14,24 @@
 </head>
 
 <body>
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Detail Transaction</h5>
-            <table>
-                <tr>
-                    <td>qty</td>
-                    <td> : {{ $transaction->qty }}</td>
-                </tr>
-                <tr>
-                    <td>total</td>
-                    <td> : {{ $transaction->total }}</td>
-                </tr>
-            </table>
+    <div class="d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Detail Transaction</h5>
+                <table>
+                    <tr>
+                        <td>qty</td>
+                        <td> : {{ $transaction->qty }}</td>
+                    </tr>
+                    <tr>
+                        <td>total</td>
+                        <td> : {{ $transaction->total }}</td>
+                    </tr>
+                </table>
 
-            <button id="pay-button" class="btn btn-primary btn-sm">Pay Now</button>
+                <button id="pay-button" class="btn btn-primary btn-sm">Pay Now</button>
+            </div>
         </div>
     </div>
 

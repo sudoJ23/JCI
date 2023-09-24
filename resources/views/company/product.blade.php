@@ -11,7 +11,7 @@
                 <h5 class="card-title">{{ $product->name }}</h5>
                 <p class="card-text">{{ $product->description }}</p>
 
-                <form action="{{ route('checkout') }}" method="POST">
+                <form action="{{ route('transaction.create') }}" method="POST">
                     @csrf
                     <input type="hidden" name="price" value="{{ $product->price }}">
                     <input type="hidden" name="product_id" value="{{ $product->id }}">

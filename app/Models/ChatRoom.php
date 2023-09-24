@@ -9,7 +9,12 @@ class ChatRoom extends Model
 {
     use HasFactory;
 
+    public function chat() {
+        return $this->hasOne(Chat::class);
+    }
+
     protected $fillable = [
+        'id',
         'sender_id',
         'receiver_id',
     ];

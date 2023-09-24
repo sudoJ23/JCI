@@ -125,7 +125,16 @@
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <a role="button" class="btn btn-primary">Selesai</a>
+                                    <a role="button" class="btn btn-primary" href="{{ route('checkout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('selesai-form').submit();">
+                                        Selesai
+                                    </a>
+
+                                    <form id="selesai-form" action="{{ route('checkout') }}" method="POST" class="d-none">
+                                        @csrf
+
+                                        <input type="hidden" name="transactionID" value="{{ $transactionID }}">
+                                    </form>
                                 </div>
                             </div>
                         </div>

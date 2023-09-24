@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Transaction;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -19,14 +20,18 @@ class TransactionController extends Controller
 
     public function createTransaction(Request $request)
     {
+        $product = Product::find($request->product_id);
         $request->request->add(['buyer_id' => auth()->user()->id, 'product_id' => $request->product_id, 'total' => $request->qty * $request->price, 'status' => 'Unpaid']);
         $transaction = Transaction::create($request->all());
+        return redirect()->action([ChatController::class, 'createChat'], ['id' => Str::uuid(), 'senderID' => auth()->user()->id, 'receiverID' => $product->user->id, 'transID' => $transaction->id]);
     }
 
     public function checkout(Request $request)
     {
-        $request->request->add(['buyer_id' => auth()->user()->id, 'product_id' => $request->product_id, 'total' => $request->qty * $request->price, 'status' => 'Unpaid']);
-        $transaction = Transaction::create($request->all());
+        // $request->request->add(['buyer_id' => auth()->user()->id, 'product_id' => $request->product_id, 'total' => $request->qty * $request->price, 'status' => 'Unpaid']);
+        // $transaction = Transaction::create($request->all());
+
+        $transaction = Transaction::find(intval($request->transactionID));
 
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('midtrans.server_key');

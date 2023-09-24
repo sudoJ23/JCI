@@ -33,7 +33,7 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+Route::get('/chat/{transactionID?}', [ChatController::class, 'index'])->name('chat.index');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
     Route::post('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
     Route::post('/createTransaction', [TransactionController::class, 'createTransaction'])->name('transaction.create');
+    Route::get('/chat/create/{senderID}/{receiverID}/{transID}', [ChatController::class, 'createChat'])->name('chat.create');
 
     Route::get('/master', function () {
         return view('layouts.master');

@@ -13,9 +13,15 @@ class Chat extends Model
         return $this->belongsTo(User::class, 'sender_id');
     }
 
+    public function chatroom() {
+        return $this->belongsTo(ChatRoom::class, 'chatroom_id');
+    }
+
     protected $fillable = [
         'message',
         'sender_id',
+        'chatroom_id',
+        'timestamp',
     ];
 
     protected $keyType = 'string';
